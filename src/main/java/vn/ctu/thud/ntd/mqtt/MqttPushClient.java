@@ -13,7 +13,8 @@ import org.slf4j.LoggerFactory;
 
 public class MqttPushClient {
 	private static final Logger LOGGER = LoggerFactory.getLogger(MqttPushClient.class);
-    private static MqttClient client;
+    
+	private static MqttClient client;
  
     public static MqttClient getClient() {
         return client;
