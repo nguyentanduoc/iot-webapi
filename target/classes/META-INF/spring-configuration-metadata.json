@@ -1,0 +1,47 @@
+{
+  "hints": [],
+  "groups": [
+    {
+      "sourceType": "vn.ctu.thud.ntd.mqtt.MqttConfig",
+      "name": "mqtt",
+      "type": "vn.ctu.thud.ntd.mqtt.MqttConfig"
+    }
+  ],
+  "properties": [
+    {
+      "sourceType": "vn.ctu.thud.ntd.mqtt.MqttConfig",
+      "name": "mqtt.clientid",
+      "type": "java.lang.String"
+    },
+    {
+      "sourceType": "vn.ctu.thud.ntd.mqtt.MqttConfig",
+      "name": "mqtt.host",
+      "type": "java.lang.String"
+    },
+    {
+      "sourceType": "vn.ctu.thud.ntd.mqtt.MqttConfig",
+      "name": "mqtt.keepalive",
+      "type": "java.lang.Integer"
+    },
+    {
+      "sourceType": "vn.ctu.thud.ntd.mqtt.MqttConfig",
+      "name": "mqtt.password",
+      "type": "java.lang.String"
+    },
+    {
+      "sourceType": "vn.ctu.thud.ntd.mqtt.MqttConfig",
+      "name": "mqtt.timeout",
+      "type": "java.lang.Integer"
+    },
+    {
+      "sourceType": "vn.ctu.thud.ntd.mqtt.MqttConfig",
+      "name": "mqtt.topic",
+      "type": "java.lang.String"
+    },
+    {
+      "sourceType": "vn.ctu.thud.ntd.mqtt.MqttConfig",
+      "name": "mqtt.username",
+      "type": "java.lang.String"
+    }
+  ]
+}
