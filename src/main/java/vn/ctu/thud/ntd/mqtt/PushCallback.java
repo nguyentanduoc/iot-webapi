@@ -1,10 +1,17 @@
 package vn.ctu.thud.ntd.mqtt;
 
+import java.io.IOException;
+import java.util.Date;
+
 import org.eclipse.paho.client.mqttv3.IMqttDeliveryToken;
 import org.eclipse.paho.client.mqttv3.MqttCallback;
 import org.eclipse.paho.client.mqttv3.MqttMessage;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+
+import com.fasterxml.jackson.databind.ObjectMapper;
+
+import vn.ctu.thud.ntd.model.Data;
 
 public class PushCallback implements MqttCallback {
 
@@ -17,16 +24,32 @@ public class PushCallback implements MqttCallback {
 
 	@Override
 	public void messageArrived(String topic, MqttMessage message) throws Exception {
-
-		logger.info("接收消息主题 : " + topic);
-		logger.info("接收消息Qos : " + message.getQos());
-		logger.info("接收消息内容 : " + new String(message.getPayload()));
-
+		
+		logger.info("topic : " + topic);
+		logger.info("Qos : " + message.getQos());
+		logger.info("payload : " + new String(message.getPayload()));
+		saveData(topic, message);
 	}
 
 	@Override
 	public void deliveryComplete(IMqttDeliveryToken token) {
 		System.out.println("deliveryComplete---------" + token.isComplete());
 	}
-
+	
+	public void saveData(String topic, MqttMessage message) {
+		if(topic.contains("ESP8266/SENDDATA")) {
+			Data data;
+			try {
+				data = new ObjectMapper().readValue(new String(message.getPayload()), Data.class);
+				data.setUpdateDate(new Date());
+			} catch (IOException e) {
+				e.printStackTrace();
+			}
+			
+		}else {
+			logger.info("topic : " + topic);
+			logger.info("Qos : " + message.getQos());
+			logger.info("payload : " + new String(message.getPayload()));
+		}
+	}
 }
